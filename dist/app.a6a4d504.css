@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .g-button {
   font-size: var(--font-size);
   height: var(--button-height);
@@ -5,6 +6,11 @@
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   background: var(--button-bg);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: top;
+  /*解决左右icon的button不对齐 上下不对齐加上即可*/
 }
 .g-button:hover {
   border-color: var(--border-color-hover);
@@ -14,4 +20,19 @@
 }
 .g-button:focus {
   outline: none;
+}
+.g-button > .content {
+  order: 2;
+}
+.g-button > .icon {
+  order: 1;
+  margin-right: 0.1em;
+}
+.g-button.icon-right > .content {
+  order: 1;
+}
+.g-button.icon-right > .icon {
+  order: 2;
+  margin-right: 0;
+  margin-left: 0.1em;
 }
