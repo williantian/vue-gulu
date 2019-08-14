@@ -29,7 +29,7 @@
 </head>
 <body>
 <div id="app">
-  <g-button>按钮</g-button>
+  <g-button :loading = "loading1" @click="loading1 = !loading1">按钮</g-button>
   <g-button :loading = "true">按钮</g-button>
   <g-button icon="settings" :loading="true">
     设置
@@ -45,6 +45,7 @@
   <g-button icon="download">下载</g-button>
   <g-button icon="thumbs-up">点赞</g-button>
   <g-button icon="down">向下</g-button>
+  <div id="test"></div>
 </div>
 <script src="./src/app.js"></script>
 <script src="//at.alicdn.com/t/font_1349258_21t7a0pecdki.js"></script>
