@@ -15,6 +15,8 @@ Vue.component('g-button-group', ButtonGroup);
 
  //单元测试
 import chai from 'chai'
+import spies from 'chai-spies'
+chai.use(spies);
 const expect = chai.expect;
 {
   const Constructor = Vue.extend(Button);
@@ -76,7 +78,7 @@ const expect = chai.expect;
   vm.$el.remove()
   vm.$destroy()
 }
-//使用mock
+//mock
 {
   const Constructor = Vue.extend(Button);
   const vm = new Constructor({
@@ -84,10 +86,11 @@ const expect = chai.expect;
       icon: 'settings',
     }
   });
-  let n = 1
   vm.$mount();
-  vm.$on('click',()=> n=2)
+  const spy = chai.spy(()=>{})
+  vm.$on('click',spy)
+  //期望函数被执行
   let button = vm.$el;
   button.click()
-  expect(n).to.equal(2)
+  expect(spy).to.have.been.called()
 }
