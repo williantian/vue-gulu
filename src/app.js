@@ -12,5 +12,10 @@ Vue.component('g-input', Input);
   el: '#app',
   data: {
     loading1: false,
-  }
+  },
+   methods: {
+    inputChange (e) {
+      console.log(e.target.value);
+    }
+   }
 });
