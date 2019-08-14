@@ -24,28 +24,38 @@
     body {
       font-size: var(--font-size);
     }
-
+     .box {margin: 20px}
   </style>
 </head>
 <body>
 <div id="app">
-  <g-button :loading = "loading1" @click="loading1 = !loading1">按钮</g-button>
-  <g-button :loading = "true">按钮</g-button>
-  <g-button icon="settings" :loading="true">
-    设置
-  </g-button>
-  <g-button icon="settings" icon-position="right" >
-    设置
-  </g-button>
-  <g-button-group>
-    <g-button icon="left">向左</g-button>
-    <g-button>向左</g-button>
-    <g-button icon="right" icon-position="right">下一页</g-button>
-  </g-button-group>
-  <g-button icon="download">下载</g-button>
-  <g-button icon="thumbs-up">点赞</g-button>
-  <g-button icon="down">向下</g-button>
-  <div id="test"></div>
+  <div class="box">
+    <g-input value="中文" disabled></g-input>
+    <g-input value="中文"></g-input>
+    <g-input value="中文" readonly></g-input>
+  </div>
+  <div class="box">
+    <g-input value="中文" error="错误信息"></g-input>
+  </div>
+  <div class="box" style="margin: 20px;">
+    <g-button :loading = "loading1" @click="loading1 = !loading1">按钮</g-button>
+    <g-button :loading = "true">按钮</g-button>
+    <g-button icon="settings" :loading="true">
+      设置
+    </g-button>
+    <g-button icon="settings" icon-position="right" >
+      设置
+    </g-button>
+    <g-button-group>
+      <g-button icon="left">向左</g-button>
+      <g-button>向左</g-button>
+      <g-button icon="right" icon-position="right">下一页</g-button>
+    </g-button-group>
+    <g-button icon="download">下载</g-button>
+    <g-button icon="thumbs-up">点赞</g-button>
+    <g-button icon="down">向下</g-button>
+    <div id="test"></div>
+  </div>
 </div>
 <script src="./src/app.js"></script>
 </body>

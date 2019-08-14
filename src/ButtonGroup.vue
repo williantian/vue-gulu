@@ -5,6 +5,7 @@
 </template>
 <script>
   export default {
+  	name: 'GuluButtonGroup',
     mounted() {
       for(let node of this.$el.children){
         let name = node.nodeName.toLowerCase();//判断子元素标签 并给出提示
@@ -15,7 +16,7 @@
     }
   }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .g-button-group {
     display: inline-flex;
     vertical-align: middle;
