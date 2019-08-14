@@ -18,7 +18,7 @@ import chai from 'chai'
 import spies from 'chai-spies'
 chai.use(spies);
 const expect = chai.expect;
-{
+try{{
   const Constructor = Vue.extend(Button);
   const vm = new Constructor({
     propsData: {
@@ -93,4 +93,11 @@ const expect = chai.expect;
   let button = vm.$el;
   button.click()
   expect(spy).to.have.been.called()
+}}catch(error){
+  window.errors = [error]
+}finally {
+  window.errors && window.errors.map((error)=> {console.error(error.message)})
+}
+{
+
 }
