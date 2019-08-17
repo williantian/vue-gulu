@@ -28,7 +28,7 @@
     }
   }
   .slide-enter-active, .slide-leave-active {
-    transition: all 1s;
+    transition: all .5s;
   }
   .slide-enter, .slide-leave-to{
   }
