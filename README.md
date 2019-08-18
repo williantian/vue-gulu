@@ -1,4 +1,4 @@
-#gulu---一个Vue UI 组件
+# gulu---一个Vue UI 组件
 [![npm version](https://badge.fury.io/js/w-vue-gulu.svg)](https://badge.fury.io/js/w-vue-gulu)
 
 ##介绍
