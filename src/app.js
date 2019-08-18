@@ -34,9 +34,17 @@ Vue.use(plugin);
     message: 'hi',
   },
    methods: {
-    showToast (){
-      this.$toast('我是message')
-    }
+     showToast: function () {
+       this.$toast('我是message', {
+           closeButton: {
+             text: '知道了',
+             callback: ()=>{
+               console.log('知道了');
+             }
+           },
+           enableHtml: false
+       })
+     }
    },
    created(){
 
