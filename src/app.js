@@ -36,13 +36,15 @@ Vue.use(plugin);
    methods: {
      showToast: function () {
        this.$toast('我是message', {
-           closeButton: {
-             text: '知道了',
-             callback: ()=>{
-               console.log('知道了');
-             }
-           },
-           enableHtml: false
+       	 position: 'middle',
+				 closeButton: {
+					 text: '知道了',
+					 callback: ()=>{
+						 console.log('知道了');
+					 }
+				 },
+				 autoClose: false,
+				 enableHtml: false
        })
      }
    },
