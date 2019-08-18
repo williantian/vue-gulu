@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-item" @click="xxx" :class="classes">
+  <div class="tabs-item" @click="onClick" :class="classes" :data-name="name">
     <slot></slot>
   </div>
 </template>
@@ -7,43 +7,49 @@
 	export default {
 		name: 'GuluTabsItem',
 		inject: ['eventBus'],
-    props: {
-			disabled:{
+		props: {
+			disabled: {
 				type: Boolean,
-        default: false,
-      },
-      name: {
-				type: String|Number,
-        required: true
-      }
-    },
-    data(){
+				default: false,
+			},
+			name: {
+				type: String | Number,
+				required: true
+			}
+		},
+		data() {
 			return {
 				active: false
-      }
-    },
-    computed:{
-			classes (){
-				return {
-					active: this.active
-        }
-      }
-    },
-		created() {
-			this.eventBus.$on('update:selected',(name)=>{
-				this.active = name === this.name;
-			})
+			}
 		},
-    methods: {
-			xxx(){
-				this.eventBus.$emit('update:selected', this.name,this)
-      }
-    }
+		computed: {
+			classes() {
+				return {
+					active: this.active,
+					disabled: this.disabled
+				}
+			}
+		},
+		created() {
+			if (this.eventBus) {
+				this.eventBus.$on('update:selected', (name) => {
+					this.active = name === this.name;
+				})
+			}
+		},
+		methods: {
+			onClick() {
+				if (this.disabled) {return}
+				this.eventBus && this.eventBus.$emit('update:selected', this.name, this);
+        this.$emit('click',this)
+			}
+		}
 	}
 </script>
 <style scoped lang="scss">
   $blue: blue;
-  .tabs-item{
+  $disabled-text-color: grey;
+  .tabs-item {
     flex-shrink: 0;
     padding: 0 1em;
     cursor: pointer;
@@ -53,6 +59,10 @@
     &.active {
       color: $blue;
       font-weight: bold;
+    }
+    &.disabled {
+      color: $disabled-text-color;
+      cursor: not-allowed;
     }
   }
 </style>
