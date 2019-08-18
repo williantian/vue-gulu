@@ -34,9 +34,18 @@ Vue.use(plugin);
     message: 'hi',
   },
    methods: {
-     showToast: function () {
+  	showToast1(){
+  		this.showToast('top')
+		},
+		 showToast2(){
+			 this.showToast('middle')
+		 },
+		 showToast3(){
+			 this.showToast('bottom')
+		 },
+     showToast: function (position) {
        this.$toast('我是message', {
-       	 position: 'bottom',
+       	 position,
 				 closeButton: {
 					 text: '知道了',
 					 callback: ()=>{
