@@ -4,7 +4,7 @@ function createToast ({Vue,message,propsData,onClose}){
 	let toast = new Constructor({propsData})
 	toast.$slots.default = [message] //必须是一个数组
 	toast.$mount()
-	toast.on('beforeClose',onClose)
+	toast.$on('beforeClose',onClose)
 	document.body.appendChild(toast.$el)
 	return toast
 }
