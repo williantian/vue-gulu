@@ -36,7 +36,7 @@ Vue.use(plugin);
    methods: {
      showToast: function () {
        this.$toast('我是message', {
-       	 position: 'middle',
+       	 position: 'bottom',
 				 closeButton: {
 					 text: '知道了',
 					 callback: ()=>{
