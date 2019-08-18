@@ -42,7 +42,7 @@ Vue.component('g-tabs-pane', TabsPane);
   data: {
     loading1: false,
     message: 'hi',
-		selectedTab:()=>{},
+		selectedTab:'sports',
   },
    methods: {
   	showToast1(){
