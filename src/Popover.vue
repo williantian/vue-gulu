@@ -1,9 +1,11 @@
 <template>
   <div class="popover" @click.stop="xxx">
-    <div v-if="visible" class="content-wrapper" @click.stop>
+    <div ref="contentWrapper" v-if="visible" class="content-wrapper" @click.stop>
       <slot name="content"></slot>
     </div>
-    <slot></slot>
+    <span ref="triggerWrapper">
+      <slot></slot>
+    </span>
   </div>
 </template>
 
@@ -17,21 +19,29 @@
     },
     methods: {
 			xxx(){
-				this.visible = !this.visible
+				this.visible = !this.visible;
         if(this.visible === true){
         	this.$nextTick(()=>{
-        		let eventHandler = ()=>{
-        			this.visible = false
+						document.body.appendChild(this.$refs.contentWrapper);
+						let {width, height, top, left} = this.$refs.triggerWrapper.getBoundingClientRect()
+						console.log(width, height, top, left);
+						this.$refs.contentWrapper.style.left = left + 'px'
+						this.$refs.contentWrapper.style.top = top + 'px'
+						let eventHandler = ()=>{
+        			this.visible = false;
 							console.log('document 隐藏 popover');
               document.removeEventListener('click',eventHandler)
-            }
+            };
             document.addEventListener('click',eventHandler)
           })
         }else{
 					console.log('vm 隐藏 popover');
 				}
       }
-    }
+    },
+    mounted() {
+
+    },
 	}
 </script>
 
@@ -40,12 +50,11 @@
     display: inline-block;
     vertical-align: top;
     position: relative;
-    .content-wrapper {
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      border: 1px solid red;
-      box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
-    }
+  }
+  .content-wrapper {
+    position: absolute;
+    border: 1px solid red;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.5);
+    transform: translateY(-100%);
   }
 </style>
