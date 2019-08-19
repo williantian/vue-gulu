@@ -47,20 +47,23 @@
     }
   </style>
 </head>
-<body>
-<div id="app" style="padding-top: 100px ;padding-left:100px">
-  <g-popover>
-    <template slot="content">
-      <div>popover内容</div>
-    </template>
-    <button>click</button>
-  </g-popover>
-  <g-popover>
-    <template slot="content">
-      <div>popover内容</div>
-    </template>
-    <button>click</button>
-  </g-popover>
+<body >
+  <div id="app" style="padding-top: 100px ;padding-left:100px; border:1px solid red">
+    <div style="border:1px solid green; padding: 5px" @click="yyy">
+      <g-popover>
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <button>click</button>
+      </g-popover>
+      <g-popover>
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <button>click</button>
+      </g-popover>
+    </div>
+  </div>
 <!--  <g-tabs :selected.sync="selectedTab">-->
 <!--    <g-tabs-head>-->
 <!--      <template slot="actions">-->
@@ -171,7 +174,6 @@
 <!--    <g-button icon="down">向下</g-button>-->
 <!--    <div id="test"></div>-->
 <!--  </div>-->
-</div>
 <script src="./src/app.js"></script>
 </body>
 </html>
