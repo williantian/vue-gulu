@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick">
+  <div class="popover" @click="onClick" ref="popover">
     <div ref="contentWrapper" v-if="visible" class="content-wrapper"
          :class="{[`position-${position}`]: true}">
       <slot name="content"></slot>
@@ -20,7 +20,46 @@
         validator(value){
         	return ['top','bottom','left','right'].indexOf(value) >= 0
         }
+      },
+      trigger: {
+				type:String,
+        default: 'click',
+        validator(value){
+        	return ['click','hover'].indexOf(value) >= 0
+        }
       }
+    },
+		mounted(){
+			if (this.trigger === 'click') {
+				return
+			}else{
+				this.$refs.popover.addEventListener('mouseenter', this.open)
+				this.$refs.popover.addEventListener('mouseleave', this.close)
+			}
+		},
+		destroyed () {
+			if (this.trigger === 'click') {
+				return
+			} else {
+				this.$refs.popover.removeEventListener('mouseenter', this.open)
+				this.$refs.popover.removeEventListener('mouseleave', this.close)
+			}
+		},
+    computed:{
+      openEvent(){
+      	if(this.trigger === 'click'){
+      		return 'click'
+        }else {
+      		return 'mouseenter'
+        }
+      },
+			closeEvent(){
+				if(this.trigger === 'click'){
+					return 'click'
+				}else {
+					return 'mouseleave'
+				}
+			},
     },
 		data() {
 			return {
@@ -33,7 +72,6 @@
 				document.body.appendChild(contentWrapper);
 				const {width, height, top, left} = triggerWrapper.getBoundingClientRect()
 				const {height: height2}=contentWrapper.getBoundingClientRect()
-				console.log(width, height, top, left);
         let positions= {
 					top:{
 						left:left + window.scrollX,
@@ -66,8 +104,8 @@
 			},
 			open() {
 				this.visible = true
-				//用this.$nextTick 时好时坏
-				setTimeout(() => {
+				//用this.$nextTick 时好时坏 应该是Windows的parcel问题
+				this.$nextTick(() => {
 					this.positionContent()
 					document.addEventListener('click', this.onClickDocument)
 				})
@@ -86,8 +124,6 @@
 					}
 				}
 			}
-		},
-		mounted() {
 		},
 	}
 </script>
