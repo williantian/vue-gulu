@@ -2,7 +2,7 @@
   <div class="popover" @click="onClick" ref="popover">
     <div ref="contentWrapper" v-if="visible" class="content-wrapper"
          :class="{[`position-${position}`]: true}">
-      <slot name="content"></slot>
+      <slot name="content" :close="close"></slot>
     </div>
     <span ref="triggerWrapper" style="display: inline-block">
       <slot></slot>
@@ -27,7 +27,7 @@
         validator(value){
         	return ['click','hover'].indexOf(value) >= 0
         }
-      }
+      },
     },
 		mounted(){
 			if (this.trigger === 'click') {

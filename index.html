@@ -51,8 +51,10 @@
   <div id="app" style="padding-top: 100px ;padding-left:100px;">
     <div style=" overflow:hidden; padding: 5px">
       <g-popover position="bottom">
-        <template slot="content">
-          <div>popover内容</div>
+        <template slot="content" slot-scope="{close}">
+          <div>popover内容
+          <g-button @click="close">close</g-button>
+          </div>
         </template>
         <g-button>click</g-button>
       </g-popover>
