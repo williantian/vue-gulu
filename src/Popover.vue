@@ -25,9 +25,12 @@
 				this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
 			},
 			onClickDocument(e) {
-				if (this.$refs.contentWrapper &&
-					(this.$refs.contentWrapper === e.target ||
-						this.$refs.contentWrapper.contains(e.target))) {return}
+				if (this.$refs.popover &&
+					(this.$refs.popover === e.target ||
+						this.$refs.popover.contains(e.target))) {return}
+				if(this.$refs.contentWrapper &&
+          (this.$refs.contentWrapper === e.target ||
+            this.$refs.contentWrapper.contains(e.target))){return}
 				this.close()
 			},
 			open() {
@@ -59,6 +62,8 @@
 </script>
 
 <style scoped lang="scss">
+  $border-color: #333;
+  $border-radius: 4px;
   .popover {
     display: inline-block;
     vertical-align: top;
@@ -66,8 +71,32 @@
   }
   .content-wrapper {
     position: absolute;
-    border: 1px solid red;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    /*box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);*/
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+    background: white;
     transform: translateY(-100%);
+    margin-top: -10px;
+    padding: .5em 1em;
+    max-width: 20em;
+    word-break: break-all;/*英文网站最好不要加*/
+    &::before, &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      border: 10px solid transparent;
+      width: 0;
+      height: 0;
+      left: 10px;
+    }
+    &::before {
+      border-top-color: black;
+      top: 100%;
+    }
+    &::after {
+      border-top-color: white;
+      top: calc(100% - 1px);
+    }
   }
 </style>
