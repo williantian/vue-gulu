@@ -45,7 +45,7 @@
 					if(vm.$options.name === 'GuluTabsHead'){
 						vm.$children.forEach((childVm)=>{
 							if(childVm.$options.name === 'GuluTabsItem' && childVm.name === this.selected){
-								console.log(childVm.$el);
+								console.log(childVm);
 								this.eventBus.$emit('update:selected',this.selected,childVm)
 							}
 						})
