@@ -5,7 +5,6 @@
      @input="$emit('input',$event.target.value)"
      @focus="$emit('focus',$event.target.value)"
      @blur="$emit('blur',$event.target.value)"
-
     >
     <template v-if="error">
       <Icon name="warn" class="icon-error"></Icon>
@@ -52,7 +51,7 @@
       height: $height;
       border: 1px solid $border-color;
       border-radius: $border-radius;
-      padding: 9px 8px;
+      padding: 0 8px;
       font-size: inherit;
       &:hover {
         border-color: $border-hover-color;

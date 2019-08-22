@@ -12,13 +12,16 @@
   import Icon from "../Icon";
 	export default {
     //props: ['icon', 'iconPosition']
-    component: {
+    components: {
     	'g-icon': Icon
     },
     name:'GuluButton',
     props: {
       icon: {},
-      loading: Boolean,
+      loading: {
+      	type:Boolean,
+        default:false,
+      },
       iconPosition: {
         type: String,
         default: 'left',

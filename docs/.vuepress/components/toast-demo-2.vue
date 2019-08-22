@@ -35,11 +35,6 @@
 		data () {
 			return {
 				content: `
-          <style>
-            .gulu-toast {
-              z-index: 30;
-            }
-          </style>
           <div>
             <g-button @click="onClickButton">上方弹出</g-button>
           </div>

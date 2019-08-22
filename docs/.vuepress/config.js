@@ -1,6 +1,6 @@
 const path = require('path')
 module.exports = {
-	base: '/gulu/',
+	base: '/vue-gulu/',
 	title: '轱辘UI',
 	description: '一个好用的UI框架',
 	themeConfig: {

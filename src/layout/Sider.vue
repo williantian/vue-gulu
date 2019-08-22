@@ -28,8 +28,9 @@
     }
   }
   .slide-enter-active, .slide-leave-active {
-    transition: all .5s;
+    transition: all .3s;
   }
   .slide-enter, .slide-leave-to{
+    margin-left: -200px;
   }
 </style>

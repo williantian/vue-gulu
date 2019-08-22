@@ -14,11 +14,11 @@
 </template>
 <script>
 	export default {
-		name: 'Tosat',
+		name: 'Toast',
 		props: {
 			autoClose: {
 				type: [Boolean,Number],
-				default: true,
+				default: 5,
         validator(value){
 					return value === false || typeof value === 'number';
 				}
@@ -27,9 +27,7 @@
 				type: Object,
 				default: () => {
 					return {
-						text: '关闭', callback: (toast) => {
-							toast.close()
-						}
+						text: '关闭', callback: undefined,
 					}
 				}
 			},
@@ -99,6 +97,8 @@
     100% {opacity: 1;}
   }
   .wrapper {
+    z-index: 30;
+    /*使用vuePress部署 vuePress的navBar z-index为20 设置z-index比20大才行*/
     position: fixed;
     left: 50%;
     transform: translateX(-50%);
